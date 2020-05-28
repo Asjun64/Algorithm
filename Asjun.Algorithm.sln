@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asjun.Algorithm.Test", "Asjun.Algorithm.Test\Asjun.Algorithm.Test.csproj", "{82D9E0E0-7523-4D1D-989B-2E60070ADF94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Document", "0_Document", "{0898C903-D4A4-478E-A7DB-7CB595B49A5F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_Lib", "1_Lib", "{BDFC16B3-62A6-4B25-8D9A-96D7CB8AF933}"
 EndProject
