@@ -5,6 +5,8 @@ using System.Text;
 namespace Asjun.Algorithm._000._000
 {
     /**
+     * TODO: 抄作业
+     * 
      * URL：https://leetcode-cn.com/problems/median-of-two-sorted-arrays
      * 
      * 004.寻找两个正序数组的中位数
@@ -33,7 +35,6 @@ namespace Asjun.Algorithm._000._000
             输入：nums1 = [2], nums2 = []
             输出：2.00000
  
-
         提示：
             nums1.length == m
             nums2.length == n
@@ -48,8 +49,40 @@ namespace Asjun.Algorithm._000._000
     {
         public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
+            int m = nums1.Length;
+            int n = nums2.Length;
+            int left = (m + n + 1) / 2;
+            int right = (m + n + 2) / 2;
+            return (FindK(nums1, 0, nums2, 0, left) + FindK(nums1, 0, nums2, 0, right)) / 2.0;
+        }
 
-            return 0.0;
+        /// <summary>
+        /// 从两个有序数组中，找出第 k 个数（按大小排列）
+        /// </summary>
+        /// <param name="nums1"></param>
+        /// <param name="i">nums1 数组的起始位置</param>
+        /// <param name="nums2"></param>
+        /// <param name="j">nums2 数组的起始位置</param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        private int FindK(int [] nums1, int i, int[] nums2, int j, int k)
+        {
+            if (i >= nums1.Length) return nums2[j + k - 1]; // nums1 为空数组
+            if (j >= nums2.Length) return nums1[i + k - 1]; // nums2 为空数组
+            if (k == 1)
+            {
+                return Math.Min(nums1[i], nums2[j]);
+            }
+            int midVal1 = (i + k / 2 - 1 < nums1.Length) ? nums1[i + k / 2 - 1] : int.MaxValue;
+            int midVal2 = (j + k / 2 - 1 < nums2.Length) ? nums1[i + k / 2 - 1] : int.MaxValue;
+            if (midVal1 < midVal2)
+            {
+                return FindK(nums1, i + k / 2, nums2, j, k - k / 2);
+            }
+            else
+            {
+                return FindK(nums1, i, nums2, j + k / 2, k - k / 2);
+            }
         }
     }
 }
